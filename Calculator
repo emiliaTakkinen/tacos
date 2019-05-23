@@ -1,0 +1,195 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Uppgift_15._2
+{
+    public partial class Form1 : Form
+    {
+
+        double sum = 0;
+        string newNr = "";
+        string operation = "";
+
+
+        public Form1()
+        {
+            InitializeComponent();
+            MessageBox.Show("Välkommen till kalkylatorn!" , "Hej!");
+        }
+
+        private void AddNumber(string nr)
+        {
+            txtBox1.AppendText(nr);
+            newNr += nr;
+        }
+
+        //metod för summarize
+        private void Summarize()
+        {
+            //om add har blivit klickad
+            if (newNr!="" && operation == "add")
+            {
+                sum = sum + Convert.ToDouble(newNr);
+                newNr = "0";
+                txtBox1.Text = "";
+                txtBox1.Text = Convert.ToString(sum);
+            }
+            //om sub har blivit klickad
+            else if (newNr != "" && operation == "sub")
+            {
+                sum = sum - Convert.ToDouble(newNr);
+                newNr = "0";
+                txtBox1.Text = "";
+                txtBox1.Text = Convert.ToString(sum);
+            }
+            //om mult har blivit klickad
+            else if (newNr != "" && operation == "mult")
+            {
+                sum = sum * Convert.ToDouble(newNr);
+                newNr = "0";
+                txtBox1.Text = "";
+                txtBox1.Text = Convert.ToString(sum);
+            }
+            //om div har blivit klickad
+            else if (newNr != "" && operation == "div")
+            {
+                sum = sum / Convert.ToDouble(newNr);
+                newNr = "0";
+                txtBox1.Text = "";
+                txtBox1.Text = Convert.ToString(sum);
+            }
+            //om sqrt har blivit klickad
+            else if (newNr != "" && operation == "sqrt")
+            {
+                sum = Convert.ToDouble(newNr);
+                Math.Sqrt(sum);
+                newNr = "0";
+                txtBox1.Text = "";
+                txtBox1.Text = Convert.ToString(sum);
+            }
+        }
+
+        private void btnC_Click(object sender, EventArgs e)
+        {
+            sum = 0;
+            newNr = "";
+            txtBox1.Text = "";
+        }
+
+        private void buttonOne_Click(object sender, EventArgs e)
+        {
+            AddNumber("1");
+        }
+
+        private void buttonTwo_Click(object sender, EventArgs e)
+        {
+            AddNumber("2");
+        }
+
+        private void buttonThree_Click(object sender, EventArgs e)
+        {
+            AddNumber("3");
+        }
+
+        private void buttonFour_Click(object sender, EventArgs e)
+        {
+            AddNumber("4");
+        }
+
+        private void buttonFive_Click(object sender, EventArgs e)
+        {
+            AddNumber("5");
+        }
+
+        private void buttonSix_Click(object sender, EventArgs e)
+        {
+            AddNumber("6");
+        }
+
+        private void buttonSeven_Click(object sender, EventArgs e)
+        {
+            AddNumber("7");
+        }
+
+        private void buttonEight_Click(object sender, EventArgs e)
+        {
+            AddNumber("8");
+        }
+
+        private void buttonNine_Click(object sender, EventArgs e)
+        {
+            AddNumber("9");
+        }
+
+        private void buttonZero_Click(object sender, EventArgs e)
+        {
+            AddNumber("0");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        //knapp för addition
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            operation = "add";
+            Summarize();
+            newNr = "";
+            txtBox1.Text = "+";
+        }
+
+        //knapp för minus
+        private void btnSub_Click(object sender, EventArgs e)
+        {
+            operation = "sub";
+            Summarize();
+            newNr = "";
+            txtBox1.Text = "-";
+        }
+
+        //knapp för multiplikation
+        private void btnMult_Click(object sender, EventArgs e)
+        {
+            operation = "mult";
+            Summarize();
+            newNr = "";
+            txtBox1.Text = "*";
+        }
+
+        private void btnDiv_Click(object sender, EventArgs e)
+        {
+            operation = "div";
+            Summarize();
+            newNr = "";
+            txtBox1.Text = "/";
+        }
+
+        /*
+        private void btnRot_Click(object sender, EventArgs e)
+        {
+            operation = "sqrt";
+            Summarize();
+            newNr = "";
+        }
+        */
+
+        private void avslutaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnSum_Click(object sender, EventArgs e)
+        {
+            Summarize();
+        }
+    }
+}
